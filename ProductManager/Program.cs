@@ -42,7 +42,7 @@ namespace ProductManager
         private static void ConfigureServices(IServiceCollection services)
         {
 
-            //services.AddTransient<INotificationHandler<ProductCreated>,ProductCreatedHandler>();
+            
             services.AddMediatR(x => x.RegisterServicesFromAssembly(typeof(Program).GetTypeInfo().Assembly));
             services.AddMediatR(x => x.RegisterServicesFromAssemblies(typeof(CreateProduct).Assembly,
                 typeof(CreateProductHandler).Assembly ));
