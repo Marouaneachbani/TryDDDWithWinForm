@@ -17,7 +17,7 @@ namespace Core.EventSourcing
     public class EventSource : IEventSource
     {
         private const string _connectionString =
-            "Server=(local);Database=SuperMarcher;" +
+            "Server=(local);Database=TryDDDWithWinForm;" +
             "Trusted_Connection=true;MultipleActiveResultSets=true";
         private readonly IEventSourcingServices eventSourcingServices;
 

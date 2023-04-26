@@ -1,0 +1,107 @@
+Create database TryDDDWithWinForm
+USE [TryDDDWithWinForm]
+GO
+
+/****** Object:  Table [dbo].[ProductCategories]    Script Date: 4/26/2023 4:21:09 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ProductCategories](
+	[Id] [uniqueidentifier] NOT NULL,
+	[ProductCategoryName] [nvarchar](max) NULL,
+ CONSTRAINT [PK_ProductCategories] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+USE [TryDDDWithWinForm]
+GO
+
+/****** Object:  Table [dbo].[ProductBrands]    Script Date: 4/26/2023 4:23:02 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ProductBrands](
+	[Id] [uniqueidentifier] NOT NULL,
+	[ProductBrandName] [nvarchar](max) NULL,
+ CONSTRAINT [PK_ProductBrands] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+USE [TryDDDWithWinForm]
+GO
+
+/****** Object:  Table [dbo].[Products]    Script Date: 4/26/2023 4:24:05 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Products](
+	[Id] [uniqueidentifier] NOT NULL,
+	[ProductName] [nvarchar](max) NULL,
+	[ProductCategoryId] [uniqueidentifier] NOT NULL,
+	[ProductBrandId] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_Products] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_ProductBrands_ProductBrandId] FOREIGN KEY([ProductBrandId])
+REFERENCES [dbo].[ProductBrands] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_ProductBrands_ProductBrandId]
+GO
+
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_ProductCategories_ProductCategoryId] FOREIGN KEY([ProductCategoryId])
+REFERENCES [dbo].[ProductCategories] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_ProductCategories_ProductCategoryId]
+GO
+USE [TryDDDWithWinForm]
+GO
+
+/****** Object:  Table [dbo].[EventHistories]    Script Date: 4/26/2023 4:27:24 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[EventHistories](
+	[Id] [uniqueidentifier] NOT NULL,
+	[AggregateId] [uniqueidentifier] NOT NULL,
+	[EventName] [nvarchar](max) NOT NULL,
+	[Data] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_EventHistories] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+USE [TryDDDWithWinForm]
+GO
+INSERT [dbo].[ProductBrands] ([Id], [ProductBrandName]) VALUES (N'5c17c90c-c46c-4000-b44f-3a9ea45806df', N'Apple')
+GO
+INSERT [dbo].[ProductBrands] ([Id], [ProductBrandName]) VALUES (N'f0ed107c-e512-4f60-a900-99daf2ef3aa3', N'Samsung')
+GO
+INSERT [dbo].[ProductCategories] ([Id], [ProductCategoryName]) VALUES (N'030a20cc-af8a-4741-aba6-c490b473b897', N'LapTop')
+GO
+INSERT [dbo].[ProductCategories] ([Id], [ProductCategoryName]) VALUES (N'79015297-e0e1-4e14-9732-fe730877d40e', N'Phone')
+GO

@@ -11,8 +11,8 @@ namespace Data.Products
 {
     public class ProductRepository : IProductRepository
     {
-        private const string _connectionString = 
-            "Server=(local);Database=SuperMarcher;" +
+        private const string _connectionString =
+            "Server=(local);Database=TryDDDWithWinForm;" +
             "Trusted_Connection=true;MultipleActiveResultSets=true";
         public async Task AddProduct(Product product)
         {

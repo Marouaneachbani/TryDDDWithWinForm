@@ -1,0 +1,2 @@
+1-Open DatabaseRequests.txt and copy all on the file .
+2-Go To SqlServer RDBSM and Copy on a new Query. 

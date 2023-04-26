@@ -12,7 +12,7 @@ namespace Domain.Products.ProductQueryStack.Queries
     public class ProductListQuery
     {
         private const string _connectionString =
-            "Server=(local);Database=SuperMarcher;" +
+            "Server=(local);Database=TryDDDWithWinForm;" +
             "Trusted_Connection=true;MultipleActiveResultSets=true";
         public async Task<List<ProductsList>>GetProducts()
         {
