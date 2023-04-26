@@ -19,7 +19,7 @@ namespace Domain.Products.ProductQueryStack.Queries
             using( var connection = new SqlConnection(_connectionString) )
             {
                 await connection.OpenAsync();
-                var product = await  connection.QueryAsync<ProductsList>("SELECT  Products.ProductName as Name   ,ProductCategories.ProductCategoryName as Category   ,ProductBrands.ProductBrandName as Brand FROM[SuperMarcher].[dbo].[Products]  join ProductBrands on ProductBrands.Id = Products.ProductBrandId join ProductCategories on ProductCategories.Id = Products.ProductCategoryId");
+                var product = await  connection.QueryAsync<ProductsList>("SELECT  Products.ProductName as Name   ,ProductCategories.ProductCategoryName as Category   ,ProductBrands.ProductBrandName as Brand FROM[TryDDDWithWinForm].[dbo].[Products]  join ProductBrands on ProductBrands.Id = Products.ProductBrandId join ProductCategories on ProductCategories.Id = Products.ProductCategoryId");
                 return product.ToList();
             }
         }
